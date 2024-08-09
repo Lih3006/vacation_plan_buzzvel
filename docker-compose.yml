@@ -1,5 +1,3 @@
-version: "3"
-
 services:
     # image project
     app:
@@ -10,8 +8,6 @@ services:
         working_dir: /var/www/
         volumes:
             - ./:/var/www
-        depends_on:
-            - redis
         networks:
             - laravel
 
@@ -55,12 +51,6 @@ services:
             PMA_HOST: db
             PMA_PORT: 3306
             MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-root}
-        networks:
-            - laravel
-
-    # redis
-    redis:
-        image: redis:latest
         networks:
             - laravel
 
