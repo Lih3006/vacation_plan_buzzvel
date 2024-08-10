@@ -1,12 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use OpenApi\Annotations as OA;
 
 /**
- * @OA\Schema(
+ *
+ *
+ * @OA\Schema (
  *     schema="HolidayPlan",
  *     required={"title", "description", "date_from", "date_to", "location"},
  *     @OA\Property(
@@ -33,8 +37,6 @@ use OpenApi\Annotations as OA;
  *         format="date",
  *         description="The end date of the holiday plan"
  *     ),
- *
- *
  *     @OA\Property(
  *          property="location",
  *          type="string",
@@ -43,14 +45,12 @@ use OpenApi\Annotations as OA;
  *      ),
  *
  * )
- *
- *
- * @OA\Schema(
+ * @OA\Schema (
  *     schema="HolidayPlanResponse",
  *     allOf={
  *         @OA\Schema(ref="#/components/schemas/HolidayPlan"),
  *         @OA\Schema(
- *     @OA\Property(
+ *              @OA\Property(
  *                  property="id",
  *                  type="integer",
  *                  example=1,
@@ -71,8 +71,32 @@ use OpenApi\Annotations as OA;
  *         )
  *     }
  * )
+ * @property int $id
+ * @property string $title
+ * @property string $description
+ * @property string $date_from
+ * @property string $date_to
+ * @property string $location
+ * @property int $user_id
+ * @property string $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|HolidayPlan newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|HolidayPlan newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|HolidayPlan query()
+ * @method static \Illuminate\Database\Eloquent\Builder|HolidayPlan whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HolidayPlan whereDateFrom($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HolidayPlan whereDateTo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HolidayPlan whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HolidayPlan whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HolidayPlan whereLocation($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HolidayPlan whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HolidayPlan whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HolidayPlan whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HolidayPlan whereUserId($value)
+ * @mixin \Eloquent
  */
-class HolidayPlan extends Model
+final class HolidayPlan extends Model
 {
     protected $fillable = ['title', 'description', 'date_from', 'date_to', 'location', 'user_id'];
     protected $hidden = ['created_at', 'updated_at'];

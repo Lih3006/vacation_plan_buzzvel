@@ -36,22 +36,17 @@ cp .env.example .env
 ```
 
 3. **Start the Application with Docker Compose**
-
     ```bash
     docker compose up -d
-    docker compose exec app bash
     ```
-4. Install Composer Dependencies
-    ```bash
-    composer install
-    ```
-5. **Run Migrations and Seed the Database in Docker Bash**
+4. **Install Composer Dependencies in Docker Bash and run Migrations and Seed the Database in Docker Bash**
 
-Execute the following command to set up the database:
-
+Execute the following commands:
 ```bash
+docker compose exec app bash
+composer install
 php artisan migrate && php artisan db:seed
-```
+ ```
 
 ## Testing the API
 

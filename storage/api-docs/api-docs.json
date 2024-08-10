@@ -87,7 +87,7 @@
                                         },
                                         "errors": {
                                             "type": "object",
-                                            "example": "{'name': ['The name field is required.'], 'email': ['The email field is required.'], 'password': ['The password field is required.'], 'password_confirmation': ['The password confirmation field is required.']}"
+                                            "example": "{\n     *             'name': ['The name field is required.'],\n     *             'email': ['The email field is required.'],\n     *             'password': ['The password field is required.'],\n     *             'password_confirmation': ['The password confirmation field is required.']\n     *          }"
                                         }
                                     },
                                     "type": "object"
@@ -143,7 +143,7 @@
                                         },
                                         "token": {
                                             "type": "string",
-                                            "example": "\n     *   eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjMwZjIwZjQw"
+                                            "example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjMwZjIwZjQw"
                                         }
                                     },
                                     "type": "object"
@@ -468,6 +468,58 @@
                                     }
                                 }
                             }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/holiday/{id}/pdf": {
+            "get": {
+                "tags": [
+                    "Holiday Plans"
+                ],
+                "summary": "Get a holiday plan in PDF",
+                "operationId": "a53ba83f0e66c3e4254bc008ade7d6b9",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the holiday plan",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/pdf": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/holiday/pdf": {
+            "get": {
+                "tags": [
+                    "Holiday Plans"
+                ],
+                "summary": "Get all holiday plans in PDF",
+                "operationId": "f5bc840eef04adb0d091b71ccb459deb",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/pdf": {}
                         }
                     }
                 },

@@ -6,6 +6,7 @@ use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Http\JsonResponse;
 
 class BaseRequest extends FormRequest
 {
@@ -22,11 +23,13 @@ class BaseRequest extends FormRequest
      *
      * @return array<string, ValidationRule|array<mixed>|string>
      */
-    public function failedValidation(Validator $validator)
+    public function failedValidation(Validator $validator): JsonResponse
     {
+
         if ($this->expectsJson()) {
             throw new HttpResponseException(response()->json(['success' => false, 'message' => 'Validation errors', 'data' => $validator->errors()], 400));
         }
+
         return $validator->errors()->messages();
     }
 }

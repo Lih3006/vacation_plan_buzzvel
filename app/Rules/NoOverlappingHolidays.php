@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Rules;
 
 use App\Models\HolidayPlan;
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
 
-class NoOverlappingHolidays implements ValidationRule
+final class NoOverlappingHolidays implements ValidationRule
 {
     private $date_from;
     private $date_to;
